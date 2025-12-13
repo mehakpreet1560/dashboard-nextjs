@@ -1,13 +1,15 @@
 // app/layout.tsx
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { CampaignProvider } from "./context/CampaignContext";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'AIDAA Dashboard - AI SDR Performance',
-  description: 'Monitor your AI SDR performance metrics, insights, and activity stream.',
+  title: "AIDAA Dashboard - AI SDR Performance",
+  description:
+    "Monitor your AI SDR performance metrics, insights, and activity stream.",
 };
 
 export default function RootLayout({
@@ -17,7 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <CampaignProvider>{children}</CampaignProvider>
+      </body>
     </html>
   );
 }
